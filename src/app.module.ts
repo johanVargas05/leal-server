@@ -8,6 +8,7 @@ import { CommonModule } from './common/common.module';
 import { JoiValidationSchema } from './infrastructure/config/joi.validation';
 import { AppConfigurationModule } from './infrastructure/config/app.configuration.module';
 import { AppConfigurationService } from './infrastructure/config/app.configuration.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AppConfigurationService } from './infrastructure/config/app.configurati
       },
     }),
     CommonModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

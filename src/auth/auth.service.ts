@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { CreateUserDto, LoginUserDto } from './dto';
-import EncryptAdapter from '../common/adapters/bcrypt.adapter';
+import { EncryptAdapter } from '../common/adapters/bcrypt.adapter';
 import { HandleExceptions } from '../common/utils/handleExceptions.utils';
 import { User } from './entities/auth.entity';
 import { TokenProvider } from './provider/token.provider';

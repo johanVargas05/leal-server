@@ -42,7 +42,7 @@ export class ProductsService {
 
   findCategory( category:Category, paginationDto:PaginationDto ) {
     const {limit=10, offset=0} = paginationDto;
-    return this._productModel.findOne({category})
+    return this._productModel.find({category})
     .limit(limit)
     .skip(offset)
     .sort({no:1})
@@ -51,7 +51,7 @@ export class ProductsService {
 
   findBrand( brand:string, paginationDto:PaginationDto ) {
     const {limit=10, offset=0} = paginationDto;
-    return this._productModel.findOne({brand})
+    return this._productModel.find({brand})
     .limit(limit)
     .skip(offset)
     .sort({no:1})
@@ -85,6 +85,6 @@ export class ProductsService {
 
     if(deletedCount==0) throw new BadRequestException(`El producto con '${id}' no existe`);
 
-    return;
+    return {ok:true, message:'Producto eliminado con éxito'};
   }
 }

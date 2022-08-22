@@ -28,6 +28,6 @@ import { TokenProvider } from './provider/token.provider';
   ],
   controllers: [AuthController],
   providers: [AuthService, TokenProvider, JwtStrategy],
-  exports:[JwtStrategy, PassportModule, JwtModule]
+  exports:[JwtStrategy, PassportModule, JwtModule, MongooseModule]
 })
 export class AuthModule {}

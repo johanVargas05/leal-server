@@ -32,7 +32,7 @@ export class ProductsController {
     return this.productsService.findCategory(category, paginationDto);
   }
 
-  @Get('bran/:brand')
+  @Get('brand/:brand')
   findBrand(@Param('brand') brand: string, @Query()paginationDto: PaginationDto) {
     return this.productsService.findBrand(brand, paginationDto);
   }

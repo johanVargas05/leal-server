@@ -1,7 +1,7 @@
 import {hashSync, compareSync} from 'bcrypt';
 import { Encrypt } from '../interfaces';
 
-export default class EncryptAdapter implements Encrypt {
+export  class EncryptAdapter implements Encrypt {
 
     compare(password: string | Buffer, encrypted: string): boolean {
         return compareSync(password,encrypted );

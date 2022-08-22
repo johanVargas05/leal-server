@@ -32,10 +32,10 @@ export class UsersController {
     return this.usersService.findOne(term);
   }
 
-  @Patch(':term')
+  @Patch(':id')
   @Auth()
-  update(@Param('term',ParseMongoIdPipe) term: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(term, updateUserDto);
+  update(@Param('id',ParseMongoIdPipe) id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(id, updateUserDto);
   }
 
   @Patch('active/:id')

@@ -11,6 +11,7 @@ import { AppConfigurationService } from './infrastructure/config/app.configurati
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { ProductsModule } from './products/products.module';
     AuthModule,
     UsersModule,
     ProductsModule,
+    SeedModule,
   ],
   controllers: [],
   providers: [],

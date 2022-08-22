@@ -5,7 +5,7 @@ import { isValidObjectId, Model } from 'mongoose';
 import { ManagerCreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-import EncryptAdapter from 'src/common/adapters/bcrypt.adapter';
+import { EncryptAdapter } from 'src/common/adapters/bcrypt.adapter';
 
 import { User } from 'src/auth/entities/auth.entity';
 import { PaginationDto } from 'src/common/dto/pagination.dto';

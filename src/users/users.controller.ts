@@ -21,21 +21,25 @@ export class UsersController {
   }
 
   @Get()
+  @Auth(ValidRoles.admin, ValidRoles.superUser)
   findAll(@Query()paginationDto: PaginationDto) {
     return this.usersService.findAll(paginationDto);
   }
 
   @Get(':term')
+  @Auth()
   findOne(@Param('term') term: string) {
     return this.usersService.findOne(term);
   }
 
   @Patch(':term')
-  update(@Param('term') term: string, @Body() updateUserDto: UpdateUserDto) {
+  @Auth()
+  update(@Param('term',ParseMongoIdPipe) term: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(term, updateUserDto);
   }
 
   @Patch('active/:id')
+  @Auth(ValidRoles.admin, ValidRoles.superUser)
   remove(@Param('id',ParseMongoIdPipe) id: string) {
     return this.usersService.remove(id);
   }

@@ -41,7 +41,7 @@ export class AuthService {
   async login(loginUserDto: LoginUserDto) {
    const {email, password} = loginUserDto;
 
-   const user = await this._userModel.findOne({email},{email:true,password:true,fullName:true,isActive:true});
+   const user = await this._userModel.findOne({email},{email:true,password:true,fullName:true,isActive:true,roles:true});
    if(!user) throw new UnauthorizedException('Credenciales no validas');
 
    const auth = this._encrypt.compare(password, user.password);

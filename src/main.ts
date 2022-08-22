@@ -13,6 +13,7 @@ async function bootstrap() {
       enableImplicitConversion:true
     }
   }));
+  app.enableCors();
   await app.listen(process.env.PORT);
   console.log(`APP run in port ${process.env.PORT}`);
 }

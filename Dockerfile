@@ -25,6 +25,10 @@ RUN mkdir -p ./leal
 COPY --from=builder ./app/dist/ ./app
 COPY ./.env ./app/.env
 
+RUN mkdir -p ./public
+COPY ./public ./public
+
+
 RUN adduser --disabled-password lealUser
 RUN chown -R lealUser:lealUser ./leal
 USER lealUser

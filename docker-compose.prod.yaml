@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  leal-server:
+    depends_on:
+      - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: leal-server
+    container_name: leal-server
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      MONGODB_DB_URI: ${MONGODB_DB_URI}
+      PORT: ${PORT}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      EXPIRES_IN_TOKEN: ${EXPIRES_IN_TOKEN}
+  db:
+    image: mongo:5
+    container_name: leal-db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: leal
+    volumes:
+      - ./mongo:/data/db

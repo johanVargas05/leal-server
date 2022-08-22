@@ -6,7 +6,7 @@ export class ParseMongoIdPipe implements PipeTransform {
   
   transform(value: string, metadata: ArgumentMetadata) {
     
-    if(!isValidObjectId(value)) throw new  BadRequestException(`'${value}' is not a valid Mongo ID`);
+    if(!isValidObjectId(value)) throw new  BadRequestException(`'${value}' No es un mongo ID valido`);
 
     return value;
   }

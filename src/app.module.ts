@@ -10,6 +10,7 @@ import { AppConfigurationModule } from './infrastructure/config/app.configuratio
 import { AppConfigurationService } from './infrastructure/config/app.configuration.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { UsersModule } from './users/users.module';
     CommonModule,
     AuthModule,
     UsersModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],

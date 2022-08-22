@@ -1,9 +1,10 @@
-import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { CreateUserDto, LoginUserDto } from './dto';
 import EncryptAdapter from '../common/adapters/bcrypt.adapter';
+import { HandleExceptions } from '../common/utils/handleExceptions.utils';
 import { User } from './entities/auth.entity';
 import { TokenProvider } from './provider/token.provider';
 
@@ -14,6 +15,7 @@ export class AuthService {
     private readonly _userModel: Model<User>,
     private readonly _encrypt:EncryptAdapter,
     private readonly _token:TokenProvider,
+    private readonly _handleExceptions:HandleExceptions
     ){}
 
   async create(createUserDto: CreateUserDto) {
@@ -32,7 +34,7 @@ export class AuthService {
       return {user, token};
       
     } catch (error) {
-     this.handleExceptions(error);
+     this._handleExceptions.handleExceptions(error,`El usuario ya existe en BD ${JSON.stringify(error.keyValue)}`);
     }
   }
 
@@ -54,11 +56,6 @@ export class AuthService {
     return {token};
   }
 
-  private handleExceptions(error:any){
-    if(error.code===11000) throw new BadRequestException(`El usuario ya existe en BD ${JSON.stringify(error.keyValue)}`);
-    console.log(error);
-    throw new InternalServerErrorException();
-  }
-
+  
 
 }

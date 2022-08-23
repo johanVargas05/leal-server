@@ -35,27 +35,21 @@ export class ProductsService {
     const {limit=10, offset=0} = paginationDto;
     return this._productModel.find()
     .limit(limit)
-    .skip(limit* offset)
-    .sort({no:1})
-    .select('-__v')
+    .skip((+offset-1)*limit)
   }
 
   findCategory( category:Category, paginationDto:PaginationDto ) {
     const {limit=10, offset=0} = paginationDto;
     return this._productModel.find({category})
     .limit(limit)
-    .skip(limit* offset)
-    .sort({no:1})
-    .select('-__v')
+    .skip((+offset-1)*limit)
   }
 
   findBrand( brand:string, paginationDto:PaginationDto ) {
     const {limit=10, offset=0} = paginationDto;
     return this._productModel.find({brand})
     .limit(limit)
-    .skip(limit* offset)
-    .sort({no:1})
-    .select('-__v')
+    .skip((+offset-1)*limit)
   }
 
   async findOne(id: string) {

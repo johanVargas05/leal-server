@@ -44,9 +44,7 @@ export class UsersService {
     const {limit=10, offset=0} = paginationDto;
     return this._userModel.find()
     .limit(limit)
-    .skip(limit* offset)
-    .sort({no:1})
-    .select('-__v')
+    .skip((+offset-1)*limit)
   }
 
   async findOne(term: string) {

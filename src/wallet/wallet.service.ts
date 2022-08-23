@@ -31,7 +31,7 @@ export class WalletService {
   }
 
   async findOneHistory(id: string, filterDto:FilterDto) {
-    const {limit=10, offset=0,action=null} = filterDto;
+    const {limit=10, offset=1,action=null} = filterDto;
     const query = (action)?{idUser:id,action}:{idUser:id};
     const wallet = await this._walletModel.find(query)
     .limit(limit)

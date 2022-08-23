@@ -41,7 +41,7 @@ export class UsersService {
   }
 
   findAll(paginationDto:PaginationDto) {
-    const {limit=10, offset=0} = paginationDto;
+    const {limit=10, offset=1} = paginationDto;
     return this._userModel.find()
     .limit(limit)
     .skip((+offset-1)*limit)

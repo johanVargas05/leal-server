@@ -36,7 +36,7 @@ export class WalletService {
     const wallet = await this._walletModel.find(query)
     .limit(limit)
     .skip((+offset-1)*limit)
-  
+    .sort({createAt:-1})
     if(wallet.length==0) throw new NotFoundException('No hay movimientos relacionados a este usuario');
 
     return wallet;
